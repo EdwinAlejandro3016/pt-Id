@@ -1,0 +1,15 @@
+h1{
+  text-align: center;
+}
+
+.login-page{
+  max-width: 500px;
+  padding-top: 20px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  form{
+    margin-top: 20px;
+  }
+}
