@@ -2,25 +2,27 @@
 
 //para hacer la creacion y ediccion
 export interface User{
-  nombre: String,
-  correo: String,
-  password: String,
-  rol: String
+  nombre: string,
+  correo: string,
+  password: string,
+  rol: string
 }
 
 export interface UserLogin extends Omit<User,'nombre' | 'rol'>{}
 
+
 export interface UserResponse extends Omit<User, 'password'>{
-  estado: Boolean,
-  google: Boolean,
-  uuid: String
+  estado: boolean,
+  google: boolean,
+  uuid: string,
+  errors? : []
 }
 
 
 //cuando se obtiene la resp del login
 export interface UserLoginResponse{
   usuario: UserResponse,
-  token: String
+  token: string
 }
 
 //cuando se obtiene al crear un usuario

@@ -16,11 +16,11 @@ export class UsersService {
   ) { }
 
   create(data: User){
-    return this.http.post<UserResponse>(`${this.api}/usuarios`,data)
+    return this.http.post<UserResponse>(`${this.api}/usuarios`,data);
   }
 
   edit(id:String,data: User){
-    return this.http.put<UserResponse>(`${this.api}/usuarios/${id}`,data)
+    return this.http.put<UserResponse>(`${this.api}/usuarios/${id}`,JSON.stringify(data));
   }
 
   //pide token acomodar

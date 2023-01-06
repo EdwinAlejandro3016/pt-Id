@@ -1,12 +1,12 @@
 export interface Categoria {
-  _id: Number,
-  nombre: String
+  _id: number,
+  nombre: string
 }
 
 export interface Producto {
-  precio: Number,
-  _id: Number,
-  nombre: String,
+  precio: number,
+  _id: number,
+  nombre: string,
   categoria: Categoria,
-  usuario: String
+  usuario: string
 }

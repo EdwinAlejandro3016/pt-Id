@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from 'src/app/models/user.model';
+import { UsersService } from 'src/app/services/users.service';
+import { AuthService } from 'src/app/services/auth.service';
+
+//models
+import { User, UserRegistered, UserResponse } from 'src/app/models/user.model';
 
 @Component({
   selector: 'app-register',
@@ -13,13 +17,21 @@ export class RegisterComponent implements OnInit {
     password: '',
     rol: 'ADMIN_ROLE'
   }
-  constructor() { }
+
+  errors = [];
+  constructor(
+    private usersService: UsersService,
+    private authService: AuthService
+  ) { }
 
   ngOnInit(): void {
   }
 
   sumbitRegister(){
-    console.log(this.registerData);
+    this.usersService.create(this.registerData).
+    subscribe((data: UserResponse)=>{
+      console.log(data);
+    })
   }
 
 }
