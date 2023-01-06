@@ -8,6 +8,8 @@ export interface User{
   rol: String
 }
 
+export interface UserLogin extends Omit<User,'nombre' | 'rol'>{}
+
 export interface UserResponse extends Omit<User, 'password'>{
   estado: Boolean,
   google: Boolean,
@@ -15,8 +17,8 @@ export interface UserResponse extends Omit<User, 'password'>{
 }
 
 
-//cuando se obtiene del login
-export interface UserLogin{
+//cuando se obtiene la resp del login
+export interface UserLoginResponse{
   usuario: UserResponse,
   token: String
 }

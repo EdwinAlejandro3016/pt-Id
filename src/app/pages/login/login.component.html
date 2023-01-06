@@ -1,25 +1,23 @@
 <div class="container login-page">
   <h1>Iniciar Sesión</h1>
-<form>
+<form #loginForm="ngForm" (ngSubmit)="submitLogin()">
   <!-- Email input -->
   <div class="form-outline mb-4">
-    <label class="form-label" for="form2Example1">Correo electrónico</label>
-    <input type="email" class="form-control" autofocus/>
+    <label class="form-label" for="correo">Correo electrónico</label>
+    <input type="email" class="form-control" name="correo" id="correo" autofocus [(ngModel)]="userData.correo" required/>
   </div>
 
   <!-- Password input -->
   <div class="form-outline mb-4">
-    <label class="form-label" for="form2Example2">Contraseña</label>
-    <input type="password" class="form-control" />
+    <label class="form-label" for="password">Contraseña</label>
+    <input type="password" class="form-control" name="password" id="password" [(ngModel)]="userData.password" required>
   </div>
 
   <!-- Submit button -->
-  <button type="button" class="btn btn-primary btn-block mb-4">Acceder</button>
+  <button type="button" class="btn btn-primary btn-block mb-4" type="submit" [disabled]="loginForm.invalid">Acceder</button>
 
   <div class="text-center">
     <p>Aún no te has registrado? <a routerLink="/register">da click aquí</a></p>
-    <button type="button" class="btn btn-link btn-floating mx-1">
-    </button>
   </div>
 </form>
 </div>

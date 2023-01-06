@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 
 //models
-import { User, UserLogin, UserResponse, UserRegistered} from '../models/user.model';
+import { User, UserLoginResponse,UserLogin, UserResponse, UserRegistered} from '../models/user.model';
 
 
 @Injectable({
@@ -16,12 +16,8 @@ export class AuthService {
     private http : HttpClient
   ) { }
 
-  login(correo: string, password: string){
-    const data = JSON.stringify({
-      correo,
-      password
-    });
-    return this.http.post<UserLogin>(`${this.api}/login`,data);
+  login(data: UserLogin){
+    return this.http.post<UserLoginResponse>(`${this.api}/login`,data);
   }
 
   home(token:string){
