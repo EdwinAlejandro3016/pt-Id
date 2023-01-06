@@ -1,9 +1,9 @@
-export default interface Categoria {
+export interface Categoria {
   _id: Number,
   nombre: String
 }
 
-export default interface Producto {
+export interface Producto {
   precio: Number,
   _id: Number,
   nombre: String,

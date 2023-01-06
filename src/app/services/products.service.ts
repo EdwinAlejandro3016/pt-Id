@@ -1,21 +1,26 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 
 //models
-import Producto from '../models/producto.model';
+import {Producto} from '../models/producto.model';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductsService {
-  private api = "https://prueba-tecnica-idecide.azurewebsites.net/api";
+  private api = environment.API_URL;
 
   constructor(
     private http : HttpClient
   ) { }
 
-  getProducts(){
-    return this.http.get<Producto[]>(this.api);
+  getAll(){
+    return this.http.get<Producto[]>(`${this.api}/productos`);
+  }
+
+  create(data: Producto){
+    return this.http.post<Producto>(`${this.api}/productos`,data);
   }
 }
