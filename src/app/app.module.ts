@@ -10,6 +10,10 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { CardProductComponent } from './components/card-product/card-product.component';
+import { ProductCardDetailComponent } from './components/product-card-detail/product-card-detail.component';
+import { ProductDetailComponent } from './pages/product-detail/product-detail.component';
+
 
 @NgModule({
   declarations: [
@@ -18,13 +22,16 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     NotFoundComponent,
     LoginComponent,
     RegisterComponent,
-    NavbarComponent
+    NavbarComponent,
+    CardProductComponent,
+    ProductCardDetailComponent,
+    ProductDetailComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

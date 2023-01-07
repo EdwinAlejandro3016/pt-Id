@@ -1,0 +1,38 @@
+<div class="card" style="width: 18rem;">
+  <!-- <img src="..." class="card-img-top" alt="..."> -->
+  <div class="card-body">
+    <form>
+      <div class="form-group">
+        <label for="nombre">Nombre del Producto</label>
+        <input type="text" placeholder="Nombre" [value]="this.product.nombre" id="nombre" name="nombre" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="precio">Precio</label>
+        <input type="number" placeholder="10" [value]="this.product.precio" id="precio" name="precio" class="form-control">
+      </div>
+      <div class="form-group">
+        <div class="actions">
+          <label for="categorias">Categorias</label>
+          <button type="button" class="btn btn-primary btn-sm"><i class="fas fa-plus"></i></button>
+        </div>
+        <select name="categorias" id="categorias" class="form-control">
+          <option value="comida chatarra">CHATARRA</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-success btn-block">Actualizar</button>
+      <button type="button" class="btn btn-danger btn-block"><i class="fas fa-trash"></i></button>
+    </form>
+    <!-- <div class="row">
+      <div class="col-md-6">
+        <a [routerLink]="['/product',this.product._id]" class="btn btn-success btn-block"><i class="fas fa-edit"></i></a>
+      </div>
+      <div class="col-md-6">
+        <a [href]="this.product._id" class="btn btn-danger btn-block"><i class="fas fa-trash"></i></a>
+      </div>
+    </div> -->
+
+  </div>
+</div>
+
+
+

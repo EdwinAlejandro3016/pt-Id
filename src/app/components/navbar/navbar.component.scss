@@ -1,3 +1,14 @@
+@media (max-width: 375px){
+  .buscador{
+    flex-flow: nowrap;
+    margin: auto;
+  }
+  .navbar-brand{
+    width: 100%;
+    text-align: center;
+  }
+}
+
 @media (max-width: 575px){
   .buscador{
     flex-flow: nowrap;
@@ -8,3 +19,4 @@
     text-align: center;
   }
 }
+

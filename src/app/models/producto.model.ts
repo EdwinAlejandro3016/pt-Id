@@ -10,3 +10,8 @@ export interface Producto {
   categoria: Categoria,
   usuario: string
 }
+
+export interface ProductsResponse {
+  total: string,
+  productos: Producto[]
+}

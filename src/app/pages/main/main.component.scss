@@ -1,0 +1,19 @@
+.products-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+h1{
+  font-size:30px;
+}
+
+
+// @media (min-width: 460px) and (max-width: 768px){
+//   .products-container{
+//     display: grid;
+//     grid-template-columns: repeat(2,1fr);
+//     grid-gap: 40px;
+//   }
+// }

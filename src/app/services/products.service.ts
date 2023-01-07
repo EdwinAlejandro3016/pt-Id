@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 
 //models
-import {Producto} from '../models/producto.model';
+import {Producto, ProductsResponse} from '../models/producto.model';
 
 
 @Injectable({
@@ -17,7 +17,11 @@ export class ProductsService {
   ) { }
 
   getAll(){
-    return this.http.get<Producto[]>(`${this.api}/productos`);
+    return this.http.get<ProductsResponse>(`${this.api}/productos`);
+  }
+
+  get(id: string){
+    return this.http.get<Producto>(`${this.api}/productos/${id}`);
   }
 
   create(data: Producto){
