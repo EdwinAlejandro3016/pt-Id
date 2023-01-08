@@ -4,6 +4,7 @@ import { environment } from '../../environments/environment';
 
 //models
 import {Categoria, CategoriaResponse, Categorias} from '../models/producto.model';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -11,12 +12,21 @@ import {Categoria, CategoriaResponse, Categorias} from '../models/producto.model
 export class CategoriasService {
   private api = environment.API_URL;
 
+  categorias: Categoria[] = [];
+  private myCategorias = new BehaviorSubject<Categoria[]>([]);
+
+  myCategorias$ = this.myCategorias.asObservable();
+
   constructor(
     private http: HttpClient
   ) { }
 
   get(id:string){
     return this.http.get<Categoria>(`${this.api}/categorias/${id}`);
+  }
+
+  loadCategorias(categorias: Categoria[]){
+    this.categorias = categorias;
   }
 
   getAll(){

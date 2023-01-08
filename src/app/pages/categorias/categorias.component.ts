@@ -22,29 +22,28 @@ export class CategoriasComponent implements OnInit {
     .subscribe({
       next: data=>{
         this.categorias = data.categorias;
+        this.categoriasService.loadCategorias(data.categorias);
       },
       error: e=>{
         console.error(e);
       }
     })
+    this.categoriasService.myCategorias$.subscribe(data=>{
+      this.categorias = data;
+    });
   }
 
   addCategoria(){
     this.categoriasService.create(this.newCategoria).subscribe(
       {
         next: rta=>{
-          this.categoriasService.getAll()
-          .subscribe({
-            next: data=>{
-              this.categorias = data.categorias;
-              let alert: ErrorModel[] = [];
-              alert.push({
+          this.categoriasService.categorias.push(rta);
+          let alert: ErrorModel[] = [];
+          alert.push({
                 msg: "Categoria agregada correctamente!",
                 type: 'success'
               })
               this.storeService.sendAlerts(alert);
-            }
-          })
         },
         error: e=>{
           console.error(e);
@@ -64,18 +63,15 @@ export class CategoriasComponent implements OnInit {
     this.categoriasService.delete(id)
     .subscribe({
       next: rta=>{
-        this.categoriasService.getAll()
-        .subscribe({
-          next: data=>{
-            this.categorias = data.categorias;
             let alert: ErrorModel[] = [];
             alert.push({
               msg: "Categoria eliminada correctamente!",
               type: 'danger'
             })
+            const indexCategoria = this.categoriasService.categorias.findIndex(i=> i._id === id);
+
+            this.categoriasService.categorias.splice(indexCategoria,1);
             this.storeService.sendAlerts(alert);
-          }
-        })
       },
       error: e=>{
         console.log(e);
