@@ -28,8 +28,12 @@ export class CardProductComponent implements OnInit{
   ) { }
 
   ngOnInit(): void {
+
   }
-  onDelete(id:string){
+  onDelete(id:string,nombre:string){
+    if(!confirm(`Estas seguro de Eliminar ${nombre}`)){
+      return;
+    }
     this.productsService.delete(id)
     .subscribe({
       next: rta=>{

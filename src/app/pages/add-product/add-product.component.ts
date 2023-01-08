@@ -30,7 +30,6 @@ export class AddProductComponent implements OnInit {
     .subscribe({
       next: data=>{
         this.categorias = data.categorias;
-
       },
       error: e =>{
         console.error(e)
@@ -52,6 +51,12 @@ export class AddProductComponent implements OnInit {
       },
       error: e=>{
         console.log(e);
+        let errors: ErrorModel[] = [];
+        errors.push({
+          msg: "Producto ya existente",
+          type: 'danger'
+        })
+        this.storeService.sendAlerts(errors);
       }
     })
   }

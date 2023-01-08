@@ -48,6 +48,12 @@ export class CategoriasComponent implements OnInit {
         },
         error: e=>{
           console.error(e);
+          let errors: ErrorModel[] = [];
+          errors.push({
+            msg: e.error.msg,
+            type: 'danger'
+          })
+          this.storeService.sendAlerts(errors);
         }
       }
     )
@@ -73,6 +79,12 @@ export class CategoriasComponent implements OnInit {
       },
       error: e=>{
         console.log(e);
+        let errors: ErrorModel[] = [];
+        errors.push({
+          msg: "No se ah podido eliminar la categoria",
+          type: 'danger'
+        })
+        this.storeService.sendAlerts(errors);
       }
     })
   }

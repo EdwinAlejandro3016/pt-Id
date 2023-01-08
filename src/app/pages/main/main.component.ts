@@ -18,10 +18,15 @@ export class MainComponent implements OnInit {
 
   ngOnInit(): void {
     this.productsService.getAll()
-    .subscribe(data=>{
-      this.products = data.productos;
-      console.log(this.products)
+    .subscribe({
+      next: data=>{
+        this.productsService.loadProducts(data.productos);
+        this.products = data.productos;
+      }
     })
+    this.productsService.myProducts$.subscribe(data=>{
+      this.products = data;
+    });
   }
 
 }

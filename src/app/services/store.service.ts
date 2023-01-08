@@ -8,6 +8,7 @@ import { Producto } from '../models/producto.model';
   providedIn: 'root'
 })
 export class StoreService {
+  //manejando errores
   private errors: ErrorModel[] = [];
   private myErrors = new BehaviorSubject<ErrorModel[]>([]);
 

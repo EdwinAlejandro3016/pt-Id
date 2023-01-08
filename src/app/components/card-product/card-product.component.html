@@ -1,15 +1,15 @@
 <div class="card" style="width: 18rem;">
   <!-- <img src="..." class="card-img-top" alt="..."> -->
   <div class="card-body">
-    <h5 class="card-title">{{this.product.nombre}}</h5>
+    <h5 class="card-title">{{product.nombre}}</h5>
     <h6 class="card-subtitle mb-2 text-muted">{{this.product.categoria.nombre}}</h6>
-    <p class="card-text"><b>${{this.product.precio}}</b></p>
+    <p class="card-text"><b>${{product.precio}}</b></p>
     <div class="row">
       <div class="col-md-6">
-        <a [routerLink]="['/product',this.product._id]" class="btn btn-success btn-block"><i class="fas fa-edit"></i></a>
+        <a [routerLink]="['/product',product._id]" class="btn btn-success btn-block"><i class="fas fa-edit"></i></a>
       </div>
       <div class="col-md-6">
-        <button type="button" (click)="onDelete(this.product._id)" class="btn btn-danger btn-block"><i class="fas fa-trash"></i></button>
+        <button type="button" (click)="onDelete(product._id,product.nombre)" class="btn btn-danger btn-block"><i class="fas fa-trash"></i></button>
       </div>
     </div>
 

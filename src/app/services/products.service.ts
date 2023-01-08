@@ -15,18 +15,18 @@ import { BehaviorSubject } from 'rxjs';
 export class ProductsService {
   private api = environment.API_URL;
 
-  private myProducts: Producto[] = [];
-
-  private myProductsSubject = new BehaviorSubject<Producto[]>([]);
-
-  myProductsSubject$ = this.myProductsSubject.asObservable();
+  private products: Producto[] = [];
+  private myProducts = new BehaviorSubject<Producto[]>([]);
+  myProducts$ = this.myProducts.asObservable();
 
   constructor(
     private http : HttpClient
   ) { }
 
   loadProducts(products: Producto[]){
-    this.myProducts = products;
+    this.products = products;
+    this.myProducts.next(this.products);
+    return this.products;
   }
 
   getAll(){
@@ -68,6 +68,9 @@ export class ProductsService {
   }
 
   delete(id:string){
+    const productIndex = this.products.findIndex(i=> i._id === id);
+    this.products.splice(productIndex,1);
+
     const token = localStorage.getItem('TOKEN') || '';
     const headers = new HttpHeaders()
     .set('x-token',JSON.parse(token));

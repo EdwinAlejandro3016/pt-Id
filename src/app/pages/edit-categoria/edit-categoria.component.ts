@@ -49,6 +49,12 @@ export class EditCategoriaComponent implements OnInit {
           },
           error: e=>{
             console.error(e);
+            let errors: ErrorModel[] = [];
+            errors.push({
+              msg: "Esta categoria ya existe",
+              type: 'danger'
+            })
+            this.storeService.sendAlerts(errors);
           }
         })
       }
