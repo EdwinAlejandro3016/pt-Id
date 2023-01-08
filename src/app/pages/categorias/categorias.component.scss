@@ -1,7 +1,14 @@
-.btn-edit{
-  margin-right: 10px;
+@media (max-width: 366px) {
+  .btn-edit{
+    margin: 0px;
+  }
 }
 
+@media (min-width: 379px) {
+  .btn-edit{
+   margin-right: 10px;
+  }
+}
 .card{
   max-width: 700px;
   margin: auto;

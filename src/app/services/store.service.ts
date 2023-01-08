@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { ErrorModel } from '../models/error.model';
-import { Producto } from '../models/producto.model';
 
 
 @Injectable({

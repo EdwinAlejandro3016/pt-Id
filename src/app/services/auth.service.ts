@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
+import {tap} from 'rxjs/operators';
+import { TokenService } from './token.service';
 
 //models
-import { User, UserLoginResponse,UserLogin, UserResponse, UserRegistered} from '../models/user.model';
+import { UserLoginResponse,UserLogin} from '../models/user.model';
 
 
 @Injectable({
@@ -13,14 +15,14 @@ export class AuthService {
   private api = `${environment.API_URL}/auth`;
 
   constructor(
-    private http : HttpClient
+    private http : HttpClient,
+    private tokenService:TokenService
   ) { }
 
   login(data: UserLogin){
-    return this.http.post<UserLoginResponse>(`${this.api}/login`,data);
-  }
-
-  home(token:string){
-    return this.http.get(`${this.api}/home`);
+    return this.http.post<UserLoginResponse>(`${this.api}/login`,data)
+    .pipe(
+      tap(res=> this.tokenService.saveToken(res.token))
+    )
   }
 }

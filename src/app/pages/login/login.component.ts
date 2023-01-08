@@ -36,7 +36,6 @@ export class LoginComponent implements OnInit {
     this.authService.login(this.userData).
     subscribe({
       next: data=>{
-        this.tokenService.saveToken(data.token);
         let alert: ErrorModel[] = [];
         alert.push({
           msg: `Bienvenido ${data.usuario.nombre}!`,

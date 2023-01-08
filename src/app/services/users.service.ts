@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 
 //models
-import { User, UserResponse, UserLogin, UserRegistered} from '../models/user.model';
+import { User, UserResponse} from '../models/user.model';
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +23,6 @@ export class UsersService {
     return this.http.put<UserResponse>(`${this.api}/usuarios/${id}`,JSON.stringify(data));
   }
 
-  //pide token acomodar
   delete(id:String){
     return this.http.delete<UserResponse>(`${this.api}/usuarios/${id}`)
   }
