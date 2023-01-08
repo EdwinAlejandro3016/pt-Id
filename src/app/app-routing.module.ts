@@ -11,7 +11,7 @@ import { AddProductComponent } from './pages/add-product/add-product.component';
 import { ProductDetailComponent } from './pages/product-detail/product-detail.component';
 import { CategoriasComponent } from './pages/categorias/categorias.component';
 import { EditCategoriaComponent } from './pages/edit-categoria/edit-categoria.component';
-
+import { AuthGuard } from './guards/auth.guard';
 
 
 const routes: Routes = [
@@ -23,22 +23,27 @@ const routes: Routes = [
   {
     path: 'product/:id',
     component: ProductDetailComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'products/add',
-    component: AddProductComponent
+    component: AddProductComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'categorias',
-    component: CategoriasComponent
+    component: CategoriasComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'categorias/:id',
-    component: EditCategoriaComponent
+    component: EditCategoriaComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'productos',
-    component: MainComponent
+    component: MainComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'login',

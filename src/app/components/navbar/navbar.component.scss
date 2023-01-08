@@ -7,6 +7,9 @@
     width: 100%;
     text-align: center;
   }
+  .cerrar-sesion{
+    margin: auto;
+  }
 }
 
 @media (max-width: 575px){
@@ -18,5 +21,9 @@
     width: 100%;
     text-align: center;
   }
+}
+
+input{
+  margin-right: 0 !important;
 }
 

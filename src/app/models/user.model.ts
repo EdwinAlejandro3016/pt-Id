@@ -5,7 +5,7 @@ export interface User{
   nombre: string,
   correo: string,
   password: string,
-  rol: string
+  rol: 'ADMIN_ROLE'
 }
 
 export interface UserLogin extends Omit<User,'nombre' | 'rol'>{}
