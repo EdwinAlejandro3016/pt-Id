@@ -9,6 +9,12 @@ h1{
   font-size:30px;
 }
 
+.title{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 
 // @media (min-width: 460px) and (max-width: 768px){
 //   .products-container{

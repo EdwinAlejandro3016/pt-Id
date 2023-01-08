@@ -1,0 +1,13 @@
+<div class="categorias-page">
+  <form #formCategoria="ngForm" class="container" (ngSubmit)="editCategoria()">
+    <h1 class="text-center">Categorias</h1>
+    <div class="card my-3">
+      <div class="card-body">
+        <input type="text" class="form-control" placeholder="Nombre de la Categoria" name="categoria" required [(ngModel)]="updatedCategoria" autofocus [value]="beforeCategoria" >
+        <button [disabled]="formCategoria.invalid" type="submit" class="btn btn-primary btn-block">Actualizar</button>
+      </div>
+    </div>
+
+  </form>
+
+</div>

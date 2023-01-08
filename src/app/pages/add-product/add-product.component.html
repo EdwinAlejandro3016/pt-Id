@@ -1,0 +1,30 @@
+<section class="main-page container">
+  <h1 class="text-center my-3">Agregar nuevo Producto</h1>
+  <div class="card" style="width: 18rem;">
+    <!-- <img src="..." class="card-img-top" alt="..."> -->
+    <div class="card-body">
+      <form #CreateForm="ngForm" (ngSubmit)="crear()">
+        <div class="form-group">
+          <label for="nombre">Nombre del Producto</label>
+          <input type="text" placeholder="Nombre" id="nombre" name="nombre" required autofocus class="form-control" [(ngModel)]="newProduct.nombre">
+        </div>
+        <div class="form-group">
+          <label for="precio">Precio</label>
+          <input type="number" placeholder="10" id="precio" name="precio" required class="form-control"
+          [(ngModel)]="newProduct.precio">
+        </div>
+        <div class="form-group">
+          <div class="actions">
+            <label for="categoria">Categorias</label>
+            <button type="button" class="btn btn-primary btn-sm"><i class="fas fa-plus" routerLink="/categorias"></i></button>
+          </div>
+          <select required name="categoria" id="categoria" class="form-control" [(ngModel)]="newProduct.categoriaID">
+            <option *ngFor="let categoria of categorias" [value]="categoria._id">{{categoria.nombre}}</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-success btn-block" [disabled]="CreateForm.invalid">Crear</button>
+      </form>
+    </div>
+  </div>
+</section>
+

@@ -13,11 +13,11 @@ export class ProductDetailComponent implements OnInit {
   productId: string | null = '';
   product: Producto = {
     nombre: '',
-    _id: 0,
+    _id: '',
     precio: 0,
     usuario: '',
     categoria: {
-      _id: 0,
+      _id: '',
       nombre: ''
     }
   }

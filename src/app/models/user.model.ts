@@ -29,4 +29,3 @@ export interface UserLoginResponse{
 export interface UserRegistered extends Omit<UserLogin, 'token'>{}
 
 
-

@@ -13,6 +13,9 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { CardProductComponent } from './components/card-product/card-product.component';
 import { ProductCardDetailComponent } from './components/product-card-detail/product-card-detail.component';
 import { ProductDetailComponent } from './pages/product-detail/product-detail.component';
+import { AddProductComponent } from './pages/add-product/add-product.component';
+import { CategoriasComponent } from './pages/categorias/categorias.component';
+import { EditCategoriaComponent } from './pages/edit-categoria/edit-categoria.component';
 
 
 @NgModule({
@@ -25,7 +28,10 @@ import { ProductDetailComponent } from './pages/product-detail/product-detail.co
     NavbarComponent,
     CardProductComponent,
     ProductCardDetailComponent,
-    ProductDetailComponent
+    ProductDetailComponent,
+    AddProductComponent,
+    CategoriasComponent,
+    EditCategoriaComponent
   ],
   imports: [
     BrowserModule,

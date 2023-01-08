@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { UsersService } from 'src/app/services/users.service';
 import { AuthService } from 'src/app/services/auth.service';
+
 
 //models
 import { UserLogin } from 'src/app/models/user.model';
@@ -19,7 +21,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private usersService: UsersService,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -27,9 +30,15 @@ export class LoginComponent implements OnInit {
 
   submitLogin(){
     this.authService.login(this.userData).
-    subscribe(data=>{
-      this.token = data.token;
-      console.log(this.token);
+    subscribe({
+      next: data=>{
+        localStorage.setItem('TOKEN',JSON.stringify(data.token));
+        this.token = data.token;
+        this.router.navigate(['./productos']);
+      },
+      error: e=>{
+        console.error(e);
+      }
     })
   }
 }

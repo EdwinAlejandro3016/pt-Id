@@ -9,7 +9,7 @@
         <a [routerLink]="['/product',this.product._id]" class="btn btn-success btn-block"><i class="fas fa-edit"></i></a>
       </div>
       <div class="col-md-6">
-        <a [href]="this.product._id" class="btn btn-danger btn-block"><i class="fas fa-trash"></i></a>
+        <button type="button" (click)="onDelete(this.product._id)" class="btn btn-danger btn-block"><i class="fas fa-trash"></i></button>
       </div>
     </div>
 
