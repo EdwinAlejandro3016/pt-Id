@@ -11,11 +11,9 @@ export interface User{
 export interface UserLogin extends Omit<User,'nombre' | 'rol'>{}
 
 
-export interface UserResponse extends Omit<User, 'password'>{
-  estado: boolean,
-  google: boolean,
-  uuid: string,
-  errors? : []
+export interface UserResponse{
+  usuario: User,
+  nombre?: ''
 }
 
 

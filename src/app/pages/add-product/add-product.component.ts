@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ErrorModel } from 'src/app/models/error.model';
 import { Categoria, crearProduct } from 'src/app/models/producto.model';
 import { CategoriasService } from 'src/app/services/categorias.service';
 import { ProductsService } from 'src/app/services/products.service';
-
+import { StoreService } from 'src/app/services/store.service';
 @Component({
   selector: 'app-add-product',
   templateUrl: './add-product.component.html',
@@ -20,6 +21,7 @@ export class AddProductComponent implements OnInit {
   constructor(
     private productsService:ProductsService,
     private categoriasService:CategoriasService,
+    private storeService: StoreService,
     private router: Router
   ) { }
 
@@ -28,6 +30,7 @@ export class AddProductComponent implements OnInit {
     .subscribe({
       next: data=>{
         this.categorias = data.categorias;
+
       },
       error: e =>{
         console.error(e)
@@ -39,7 +42,12 @@ export class AddProductComponent implements OnInit {
     this.productsService.create(this.newProduct)
     .subscribe({
       next: data=> {
-        console.log(data);
+        let alert: ErrorModel[] = [];
+        alert.push({
+            msg: "Producto creado correctamente!",
+            type: 'success'
+         })
+        this.storeService.sendAlerts(alert);
         this.router.navigate(['./productos']);
       },
       error: e=>{

@@ -1,7 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router} from '@angular/router';
+import { ErrorModel } from 'src/app/models/error.model';
 import { Producto } from 'src/app/models/producto.model';
 import { ProductsService } from 'src/app/services/products.service';
+import { StoreService } from 'src/app/services/store.service';
 
 @Component({
   selector: 'app-card-product',
@@ -21,6 +23,7 @@ export class CardProductComponent implements OnInit{
   }
   constructor(
     private productsService: ProductsService,
+    private storeService:StoreService,
     private router: Router
   ) { }
 
@@ -30,11 +33,16 @@ export class CardProductComponent implements OnInit{
     this.productsService.delete(id)
     .subscribe({
       next: rta=>{
-        console.log(rta);
+        let alert: ErrorModel[] = [];
+        alert.push({
+          msg: "Producto eliminado correctamente!",
+          type: 'danger'
+        })
+        this.storeService.sendAlerts(alert);
         this.router.navigate(['/']);
       },
       error: e=>{
-        console.error(e.error.errors);
+        console.error(e);
       }
     })
   }

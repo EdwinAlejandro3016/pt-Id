@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoriasService } from 'src/app/services/categorias.service';
 import { ActivatedRoute,Router } from '@angular/router';
+import { StoreService } from 'src/app/services/store.service';
+import { ErrorModel } from 'src/app/models/error.model';
 
 @Component({
   selector: 'app-edit-categoria',
@@ -13,6 +15,7 @@ export class EditCategoriaComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private categoriasService:CategoriasService,
+    private storeService:StoreService,
     private router:Router
   ) { }
 
@@ -36,10 +39,16 @@ export class EditCategoriaComponent implements OnInit {
         .subscribe({
           next: rta=>{
           console.log(rta);
+          let alert: ErrorModel[] = [];
+          alert.push({
+            msg: "Categoria editada correctamente!",
+            type: 'success'
+          })
+          this.storeService.sendAlerts(alert);
           this.router.navigate(['/categorias']);
           },
           error: e=>{
-            console.error(e.error.errors);
+            console.error(e);
           }
         })
       }

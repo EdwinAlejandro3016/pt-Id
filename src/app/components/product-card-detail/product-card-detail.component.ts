@@ -1,10 +1,12 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ErrorModel } from 'src/app/models/error.model';
 
 import { Categoria, CategoriaResponse, Categorias, Producto, ProductoEditBody } from 'src/app/models/producto.model';
 import { AuthService } from 'src/app/services/auth.service';
 import { CategoriasService } from 'src/app/services/categorias.service';
 import { ProductsService } from 'src/app/services/products.service';
+import { StoreService } from 'src/app/services/store.service';
 
 
 
@@ -32,10 +34,10 @@ export class ProductCardDetailComponent implements OnInit {
     precio: this.product.precio
   }
   categorias: Categoria[] = [];
-
   constructor(
     private categoriasService:CategoriasService,
     private productsService: ProductsService,
+    private storeService:StoreService,
     private router: Router
   ) { }
 
@@ -63,9 +65,20 @@ export class ProductCardDetailComponent implements OnInit {
       next: data =>{
         console.log(data)
         this.router.navigate(['./productos']);
+        let alert: ErrorModel[] = [];
+        alert.push({
+          msg: "Producto Editado correctamente!",
+          type: "success"
+        });
+        this.storeService.sendAlerts(alert);
       },
-      error: error=>{
-        console.error(error.error.msg);
+      error: e=>{
+        let errors: ErrorModel[] = [];
+        errors.push({
+          msg: "Error en la respuesta del servidor por favor intentar con otro nombre",
+          type: 'danger'
+        })
+        this.storeService.sendAlerts(errors);
       }
     })
   }

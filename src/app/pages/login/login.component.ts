@@ -6,6 +6,8 @@ import { AuthService } from 'src/app/services/auth.service';
 
 //models
 import { UserLogin } from 'src/app/models/user.model';
+import { ErrorModel } from 'src/app/models/error.model';
+import { StoreService } from 'src/app/services/store.service';
 
 @Component({
   selector: 'app-login',
@@ -22,6 +24,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private usersService: UsersService,
     private authService: AuthService,
+    private storeService:StoreService,
     private router: Router
   ) { }
 
@@ -34,10 +37,21 @@ export class LoginComponent implements OnInit {
       next: data=>{
         localStorage.setItem('TOKEN',JSON.stringify(data.token));
         this.token = data.token;
+        let alert: ErrorModel[] = [];
+        alert.push({
+          msg: `Bienvenido ${data.usuario.nombre}!`,
+          type: 'success'
+        })
+        this.storeService.sendAlerts(alert);
         this.router.navigate(['./productos']);
       },
       error: e=>{
-        console.error(e);
+        let errors: ErrorModel[] = [];
+        errors.push({
+          msg: e.error.msg,
+          type: 'danger'
+        })
+        this.storeService.sendAlerts(errors);
       }
     })
   }

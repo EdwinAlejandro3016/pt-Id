@@ -16,6 +16,7 @@ import { ProductDetailComponent } from './pages/product-detail/product-detail.co
 import { AddProductComponent } from './pages/add-product/add-product.component';
 import { CategoriasComponent } from './pages/categorias/categorias.component';
 import { EditCategoriaComponent } from './pages/edit-categoria/edit-categoria.component';
+import { AlertComponent } from './components/alert/alert.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { EditCategoriaComponent } from './pages/edit-categoria/edit-categoria.co
     ProductDetailComponent,
     AddProductComponent,
     CategoriasComponent,
-    EditCategoriaComponent
+    EditCategoriaComponent,
+    AlertComponent
   ],
   imports: [
     BrowserModule,
