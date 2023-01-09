@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { TokenService } from 'src/app/services/token.service';
 
 @Component({
@@ -7,12 +8,18 @@ import { TokenService } from 'src/app/services/token.service';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
-  token:string | null = null;
+  token:string = '';
   constructor(
-     private tokenService:TokenService
+     private tokenService:TokenService,
+     private router: Router
   ) { }
 
   ngOnInit(): void {
     this.token = this.tokenService.getToken();
+  }
+  off(){
+    this.token = '';
+    this.tokenService.cerrarSession();
+    this.router.navigate(['/login']);
   }
 }

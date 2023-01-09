@@ -8,6 +8,19 @@ export interface User{
   rol: 'ADMIN_ROLE'
 }
 
+//interface cuando traigo todos los usuarios
+export interface UserUsuariosObject extends Omit<User,'password'>{
+  estado: boolean,
+  google: boolean,
+  uuid: string
+}
+
+//array de usuarios
+export interface UserUsuariosAll{
+  usuarios: UserUsuariosObject[];
+  total: number
+}
+
 export interface UserLogin extends Omit<User,'nombre' | 'rol'>{}
 
 
@@ -15,7 +28,6 @@ export interface UserResponse{
   usuario: User,
   nombre?: ''
 }
-
 
 //cuando se obtiene la resp del login
 export interface UserLoginResponse{
@@ -25,5 +37,7 @@ export interface UserLoginResponse{
 
 //cuando se obtiene al crear un usuario
 export interface UserRegistered extends Omit<UserLogin, 'token'>{}
+
+
 
 

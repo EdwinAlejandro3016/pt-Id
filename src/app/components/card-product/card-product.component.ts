@@ -19,7 +19,10 @@ export class CardProductComponent implements OnInit{
       _id: '',
       nombre: ''
     },
-    usuario: ''
+    usuario: {
+      _id: '',
+      nombre: ''
+    }
   }
   constructor(
     private productsService: ProductsService,

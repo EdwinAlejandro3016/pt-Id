@@ -6,5 +6,5 @@
     <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
   </form>
 
-  <button type="button" *ngIf="token" class="btn btn-dark cerrar-sesion"><i class="fas fa-sign-out" title="Cerrar sesion"></i></button>
+  <button type="button" *ngIf="token" class="btn btn-dark cerrar-sesion"><i class="fas fa-sign-out" title="Cerrar sesion" (click)="off()"></i></button>
 </nav>

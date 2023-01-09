@@ -5,6 +5,8 @@ import { environment } from '../../environments/environment';
 //models
 import {crearProduct, Producto, ProductoEditBody, ProductsResponse} from '../models/producto.model';
 import { BehaviorSubject } from 'rxjs';
+import { AuthService } from './auth.service';
+import { UserUsuariosObject } from '../models/user.model';
 
 
 @Injectable({
@@ -13,12 +15,13 @@ import { BehaviorSubject } from 'rxjs';
 export class ProductsService {
   private api = environment.API_URL;
 
-  private products: Producto[] = [];
+  products: Producto[] = [];
   private myProducts = new BehaviorSubject<Producto[]>([]);
   myProducts$ = this.myProducts.asObservable();
 
   constructor(
-    private http : HttpClient
+    private http : HttpClient,
+    private authService:AuthService
   ) { }
 
   loadProducts(products: Producto[]){

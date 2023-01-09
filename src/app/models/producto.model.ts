@@ -1,6 +1,7 @@
 export interface Categoria {
   _id: string,
-  nombre: string
+  nombre: string,
+  usuario?: UsuarioCategoria
 }
 export interface UsuarioCategoria {
   _id: string,
@@ -21,7 +22,10 @@ export interface Producto {
   _id: string,
   nombre: string,
   categoria: Categoria,
-  usuario: string
+  usuario: {
+    _id: string,
+    nombre: string
+  }
 }
 
 export interface crearProduct{
@@ -36,6 +40,7 @@ export interface ProductoEditBody{
   precio: number,
   categoriaID: string
 }
+
 
 export interface ProductsResponse {
   total: string,

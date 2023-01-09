@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ErrorModel } from 'src/app/models/error.model';
 import { Categoria } from 'src/app/models/producto.model';
+import { AuthService } from 'src/app/services/auth.service';
 import { CategoriasService } from 'src/app/services/categorias.service';
 import { StoreService } from 'src/app/services/store.service';
 
@@ -14,15 +15,22 @@ export class CategoriasComponent implements OnInit {
   newCategoria = '';
   constructor(
     private categoriasService:CategoriasService,
-    private storeService:StoreService
+    private storeService:StoreService,
+    private authService:AuthService
   ) { }
 
   ngOnInit(): void {
     this.categoriasService.getAll()
     .subscribe({
       next: data=>{
-        this.categorias = data.categorias;
-        this.categoriasService.loadCategorias(data.categorias);
+        const myUser = this.authService.getUser();
+        if(myUser){
+        //agregar solo las categorias que pertenezcan a ese usuario
+        const categoriasFiltered = data.categorias.filter(i=> i.usuario?._id == myUser.uid);
+        console.log(categoriasFiltered);
+        this.categorias =categoriasFiltered;
+        this.categoriasService.loadCategorias(categoriasFiltered);
+        }
       },
       error: e=>{
         console.error(e);
@@ -37,6 +45,8 @@ export class CategoriasComponent implements OnInit {
     this.categoriasService.create(this.newCategoria).subscribe(
       {
         next: rta=>{
+          console.log(this.categoriasService.categorias)
+          console.log(rta)
           this.categoriasService.categorias.push(rta);
           let alert: ErrorModel[] = [];
           alert.push({
