@@ -25,17 +25,15 @@ export class CategoriasComponent implements OnInit {
       next: data=>{
         const myUser = this.authService.getUser();
         if(myUser){
-        //agregar solo las categorias que pertenezcan a ese usuario
-        const categoriasFiltered = data.categorias.filter(i=> i.usuario?._id == myUser.uid);
-        console.log(categoriasFiltered);
-        this.categorias =categoriasFiltered;
-        this.categoriasService.loadCategorias(categoriasFiltered);
-        }
-      },
-      error: e=>{
-        console.error(e);
+         //agregar solo las categorias que pertenezcan a ese usuario
+         const categoriasFiltered = data.categorias.filter(i=> i.usuario?._id == myUser.uid);
+         console.log(categoriasFiltered);
+         this.categorias = categoriasFiltered;
+         this.categoriasService.categorias = categoriasFiltered;
+         }
       }
     })
+
     this.categoriasService.myCategorias$.subscribe(data=>{
       this.categorias = data;
     });

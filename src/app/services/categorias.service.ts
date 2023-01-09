@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
+import { AuthService } from './auth.service';
 
 //models
 import {Categoria, Categorias} from '../models/producto.model';
@@ -18,16 +19,17 @@ export class CategoriasService {
   myCategorias$ = this.myCategorias.asObservable();
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private authService:AuthService
   ) { }
 
   get(id:string){
     return this.http.get<Categoria>(`${this.api}/categorias/${id}`);
   }
 
-  loadCategorias(categorias: Categoria[]){
-    this.categorias = categorias;
-  }
+  // loadCategorias(categorias: Categoria[]){
+  //   this.categorias = categorias;
+  // }
 
   getAll(){
     return this.http.get<Categorias>(`${this.api}/categorias`);

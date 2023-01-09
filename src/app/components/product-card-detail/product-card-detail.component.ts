@@ -41,14 +41,23 @@ export class ProductCardDetailComponent implements OnInit {
     private categoriasService:CategoriasService,
     private productsService: ProductsService,
     private storeService:StoreService,
+    private authService: AuthService,
     private router: Router
   ) { }
 
   ngOnInit(): void {
     this.categoriasService.getAll()
-    .subscribe(data=>{
-      this.categorias = data.categorias;
-      console.log(this.categorias);
+    .subscribe({
+      next: data=>{
+        const myUser = this.authService.getUser();
+        if(myUser){
+         //agregar solo las categorias que pertenezcan a ese usuario
+         const categoriasFiltered = data.categorias.filter(i=> i.usuario?._id == myUser.uid);
+         console.log(categoriasFiltered);
+         this.categorias = categoriasFiltered;
+         this.categoriasService.categorias = categoriasFiltered;
+         }
+      }
     })
   }
   editar(){
