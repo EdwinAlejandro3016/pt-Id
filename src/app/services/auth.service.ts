@@ -31,6 +31,7 @@ export class AuthService {
     //obtengo mi usuario con todos sus datos
     const usuariosDB = this.http.get<UserUsuariosAll>(`${this.api}/usuarios`).subscribe({
       next: user=>{
+        console.log(user);
         const myUser = user.usuarios.find(i=> i.correo === data.correo);
         localStorage.setItem('USER',JSON.stringify(myUser));
       }

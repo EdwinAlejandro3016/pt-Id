@@ -18,6 +18,7 @@ import { CategoriasComponent } from './pages/categorias/categorias.component';
 import { EditCategoriaComponent } from './pages/edit-categoria/edit-categoria.component';
 import { AlertComponent } from './components/alert/alert.component';
 import { TokenInterceptor } from './interceptors/token.interceptor';
+import { BuscadorComponent } from './components/buscador/buscador.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { TokenInterceptor } from './interceptors/token.interceptor';
     AddProductComponent,
     CategoriasComponent,
     EditCategoriaComponent,
-    AlertComponent
+    AlertComponent,
+    BuscadorComponent
   ],
   imports: [
     BrowserModule,

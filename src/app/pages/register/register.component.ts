@@ -38,13 +38,14 @@ export class RegisterComponent implements OnInit {
         console.log(user)
         let alert: ErrorModel[] = [];
         alert.push({
-          msg: `Bienvenido ${user.usuario.nombre}!`,
+          msg: `Usuario registrado correctamente`,
           type: 'success'
         });
         this.storeService.sendAlerts(alert);
-        this.router.navigate(['./productos']);
+        this.router.navigate(['./login']);
       },
       error: e=>{
+        console.log(e);
         let errors: ErrorModel[] = [];
         e.error.errors.map((err: ErrorModel)=>{
           errors.push({

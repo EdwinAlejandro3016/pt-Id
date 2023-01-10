@@ -1,10 +1,5 @@
 <nav class="navbar navbar-light bg-light">
   <a class="navbar-brand" routerLink="productos">Products App</a>
-
-  <form class="form-inline buscador" *ngIf="token" >
-    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-    <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
-  </form>
-
+  <app-buscador *ngIf="token"></app-buscador>
   <button type="button" *ngIf="token" class="btn btn-dark cerrar-sesion"><i class="fas fa-sign-out" title="Cerrar sesion" (click)="off()"></i></button>
 </nav>

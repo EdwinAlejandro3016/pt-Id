@@ -8,9 +8,9 @@ import { TokenService } from 'src/app/services/token.service';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
-  token:string = '';
+  token: string = '';
   constructor(
-     private tokenService:TokenService,
+      private tokenService:TokenService,
      private router: Router
   ) { }
 
@@ -18,7 +18,6 @@ export class NavbarComponent implements OnInit {
     this.token = this.tokenService.getToken();
   }
   off(){
-    this.token = '';
     this.tokenService.cerrarSession();
     this.router.navigate(['/login']);
   }
