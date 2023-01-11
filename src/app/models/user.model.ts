@@ -12,7 +12,7 @@ export interface User{
 export interface UserUsuariosObject extends Omit<User,'password'>{
   estado: boolean,
   google: boolean,
-  uuid: string
+  uid: string
 }
 
 //array de usuarios

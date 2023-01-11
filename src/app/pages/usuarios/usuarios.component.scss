@@ -1,0 +1,16 @@
+.products-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+h1{
+  font-size:30px;
+}
+
+.title{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

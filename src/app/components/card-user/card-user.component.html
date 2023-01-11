@@ -1,0 +1,20 @@
+<div class="card" style="width: 18rem;">
+  <!-- <img src="..." class="card-img-top" alt="..."> -->
+  <div class="card-body">
+    <h5 class="card-title">{{usuario.nombre}}</h5>
+    <h6 class="card-subtitle mb-2 text-muted">{{usuario.correo}}</h6>
+    <p class="card-text"><b></b></p>
+    <div class="row">
+      <div class="col-md-6">
+        <a [routerLink]="['edit',usuario.uid]" class="btn btn-success btn-block"><i class="fas fa-edit"></i></a>
+      </div>
+      <div class="col-md-6">
+        <button type="button" (click)="onDelete(usuario.uid,usuario.nombre)" class="btn btn-danger btn-block"><i class="fas fa-trash"></i></button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+

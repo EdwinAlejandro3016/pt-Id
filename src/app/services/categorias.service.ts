@@ -32,7 +32,7 @@ export class CategoriasService {
   // }
 
   getAll(){
-    return this.http.get<Categorias>(`${this.api}/categorias`);
+    return this.http.get<Categorias>(`${this.api}/categorias?limite=100`);
   }
 
   edit(id:string,nombre:string){

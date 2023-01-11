@@ -7,6 +7,7 @@ import { TokenService } from './token.service';
 //models
 import { UserLoginResponse,UserLogin, UserUsuariosAll, UserUsuariosObject} from '../models/user.model';
 import { UsersService } from './users.service';
+import { BehaviorSubject } from 'rxjs';
 
 
 @Injectable({
@@ -29,7 +30,7 @@ export class AuthService {
 
   login(data: UserLogin){
     //obtengo mi usuario con todos sus datos
-    const usuariosDB = this.http.get<UserUsuariosAll>(`${this.api}/usuarios`).subscribe({
+    const usuariosDB = this.http.get<UserUsuariosAll>(`${this.api}/usuarios?limite=100`).subscribe({
       next: user=>{
         console.log(user);
         const myUser = user.usuarios.find(i=> i.correo === data.correo);
@@ -43,7 +44,6 @@ export class AuthService {
     .pipe(
       tap(res=> {
         this.tokenService.saveToken(res.token);
-        console.log(res.token);
       })
     )
   }

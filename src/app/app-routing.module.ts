@@ -12,6 +12,9 @@ import { ProductDetailComponent } from './pages/product-detail/product-detail.co
 import { CategoriasComponent } from './pages/categorias/categorias.component';
 import { EditCategoriaComponent } from './pages/edit-categoria/edit-categoria.component';
 import { AuthGuard } from './guards/auth.guard';
+import { UsuariosComponent } from './pages/usuarios/usuarios.component';
+import { EditUserComponent } from './pages/edit-user/edit-user.component';
+import { AddUserComponent } from './pages/add-user/add-user.component';
 
 
 const routes: Routes = [
@@ -54,9 +57,25 @@ const routes: Routes = [
     component: RegisterComponent
   },
   {
+    path: 'usuarios',
+    canActivate: [AuthGuard],
+    component: UsuariosComponent
+  },
+  {
+    path: 'usuarios/edit/:id',
+    canActivate: [AuthGuard],
+    component: EditUserComponent
+  },
+  {
+    path: 'usuarios/add',
+    canActivate: [AuthGuard],
+    component: AddUserComponent
+  },
+  {
     path: '**',
     component: NotFoundComponent
   }
+
 ];
 
 @NgModule({

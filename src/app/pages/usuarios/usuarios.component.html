@@ -1,0 +1,9 @@
+
+<section class="main-page container">
+  <div class="title">
+  <h1 class="text-center my-3 mr-3">USUARIOS</h1> <button type="button" class="btn btn-primary btn-sm" routerLink="/register"><i class="fas fa-plus"></i></button>
+  </div>
+  <div class="products-container">
+    <app-card-user *ngFor="let usuario of usuarios" [usuario]="usuario"></app-card-user>
+  </div>
+</section>

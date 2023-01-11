@@ -19,6 +19,11 @@ import { EditCategoriaComponent } from './pages/edit-categoria/edit-categoria.co
 import { AlertComponent } from './components/alert/alert.component';
 import { TokenInterceptor } from './interceptors/token.interceptor';
 import { BuscadorComponent } from './components/buscador/buscador.component';
+import { UsuariosComponent } from './pages/usuarios/usuarios.component';
+import { CardUserComponent } from './components/card-user/card-user.component';
+import { EditUserComponent } from './pages/edit-user/edit-user.component';
+import { AddUserComponent } from './pages/add-user/add-user.component';
+import { CardUserDetailComponent } from './components/card-user-detail/card-user-detail.component';
 
 
 @NgModule({
@@ -36,7 +41,12 @@ import { BuscadorComponent } from './components/buscador/buscador.component';
     CategoriasComponent,
     EditCategoriaComponent,
     AlertComponent,
-    BuscadorComponent
+    BuscadorComponent,
+    UsuariosComponent,
+    CardUserComponent,
+    EditUserComponent,
+    AddUserComponent,
+    CardUserDetailComponent
   ],
   imports: [
     BrowserModule,

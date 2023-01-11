@@ -31,7 +31,7 @@ export class ProductsService {
   }
 
   getAll(){
-    return this.http.get<ProductsResponse>(`${this.api}/productos`);
+    return this.http.get<ProductsResponse>(`${this.api}/productos?limite=100`);
   }
 
   get(id: string){
